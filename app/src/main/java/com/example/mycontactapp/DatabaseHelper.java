@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.view.View;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -60,6 +61,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Cursor getAllData(){
         Log.d("MyContactApp", "DatabaseHelper: getAllData called");
-
+        SQLiteDatabase db = this.getWritableDatabase();
+        Log.d("MyContactApp", "DatabaseHelper: Got writable db");
+        Cursor res = db.rawQuery("select * from " + TABLE_NAME, null);
+        Log.d("MyContactApp", "DatabaseHelper: Made cursor, count is "+res.getCount());
+        return res;
     }
 }

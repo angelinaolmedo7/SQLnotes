@@ -44,13 +44,16 @@ public class MainActivity extends AppCompatActivity {
 
         if (res.getCount() == 0){
             showMessage("Error", "No data found in database");
+            Log.d("MyContactApp", "MainActivity: In viewData - No data found");
         }
-
         StringBuffer buffer = new StringBuffer();
-        buffer.append("ID: "+ res.getString(0) + "\n");
+        Log.d("MyContactApp", "MainActivity: In viewData - Made buffer");
+        buffer.append("ID: " + res.getString(0) + "\n"); //this is the issue
+        Log.d("MyContactApp", "MainActivity: In viewData - Appended to buffer");
+
         //do other entries
 
-        Log.d("MyContactApp", "MainActivity: In viewData - buffer assembled");
+        Log.d("MyContactApp", "MainActivity: In viewData - Buffer assembled");
         showMessage("Data", buffer.toString());
     }
 
