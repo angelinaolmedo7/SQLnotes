@@ -34,18 +34,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="340dp"
+        android:layout_marginTop="15dp"
         android:onClick="addData"
         android:text="Add Contact"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/editAddress" />
 
     <Button
         android:id="@+id/viewDataButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="5dp"
         android:onClick="viewData"
         android:text="View Contacts"
         app:layout_constraintStart_toStartOf="parent"
@@ -143,4 +143,24 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/editAddress"
         app:layout_constraintTop_toTopOf="@+id/editAddress" />
+
+    <Button
+        android:id="@+id/deleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:onClick="deleteAllData"
+        android:text="Delete All Contacts"
+        app:layout_constraintStart_toStartOf="@+id/viewDataButton"
+        app:layout_constraintTop_toBottomOf="@+id/viewDataButton" />
+
+    <Button
+        android:id="@+id/searchButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:onClick="searchData"
+        android:text="@android:string/search_go"
+        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintTop_toTopOf="@+id/button" />
 </android.support.constraint.ConstraintLayout>

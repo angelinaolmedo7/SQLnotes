@@ -15,11 +15,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String TABLE_NAME = "Contact_table";
     public static final String ID = "ID";
     public static final String COLUMN_NAME_CONTACT = "contact";
+    public static final String COLUMN_CELL_CONTACT = "cell";
+    public static final String COLUMN_HOME_CONTACT = "home";
+    public static final String COLUMN_EMAIL_CONTACT = "email";
+    public static final String COLUMN_ADDRESS_CONTACT = "address";
 
     public static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + TABLE_NAME + " (" +
                     ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    COLUMN_NAME_CONTACT + " TEXT)";
+                    COLUMN_NAME_CONTACT + " TEXT," +
+                    COLUMN_CELL_CONTACT + " TEXT," +
+                    COLUMN_HOME_CONTACT + " TEXT," +
+                    COLUMN_EMAIL_CONTACT + " TEXT," +
+                    COLUMN_ADDRESS_CONTACT + " TEXT)";
 
     public static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + TABLE_NAME;
@@ -42,11 +50,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertData(String name){
+    public boolean insertData(String name, String cell, String home, String email, String address){
         Log.d("MyContactApp", "DatabaseHelper: Inserting data");
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COLUMN_NAME_CONTACT, name);
+        contentValues.put(COLUMN_CELL_CONTACT, cell);
+        contentValues.put(COLUMN_HOME_CONTACT, home);
+        contentValues.put(COLUMN_EMAIL_CONTACT, email);
+        contentValues.put(COLUMN_ADDRESS_CONTACT, address);
         long result = db.insert(TABLE_NAME, null, contentValues);
 
         if (result == -1){
@@ -67,4 +79,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Log.d("MyContactApp", "DatabaseHelper: Made cursor, count is "+res.getCount());
         return res;
     }
+
+    public boolean deleteData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL(SQL_DELETE_ENTRIES);
+        onCreate(db);
+
+        return true;
+    }
+
 }
